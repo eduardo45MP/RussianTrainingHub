@@ -1,0 +1,89 @@
+/*assets/css/style.css*/
+
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  color: #f0f0f0;
+  font-family: 'Fira Code', monospace;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: centre;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #61dafb;
+  text-align: centre;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffcc00;
+}
+
+/* Menu and game */
+#menu, #game {
+  background-color: #222;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px #000;
+  width: 100%;
+  max-width: 500px;
+  text-align: centre;
+}
+
+/* Buttons */
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-colour 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+input[type="text"] {
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 0.5rem;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: centre;
+}
+
+/* Feedback */
+#feedback {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  min-height: 2rem;
+}
+
+#challenge {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  display: inline-block;
+  color: #00ffcc;
+}
