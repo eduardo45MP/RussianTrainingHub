@@ -1,17 +1,6 @@
 // pages/typing/logic.js
 
-const MAPA_CARACTERES = {
-  'а': 'f', 'б': ',', 'в': 'd', 'г': 'u', 'д': 'l', 'е': 't',
-  'ё': '`', 'ж': 'ç', 'з': 'p', 'и': 'b', 'й': 'q', 'к': 'r',
-  'л': 'k', 'м': 'v', 'н': 'y', 'о': 'j', 'п': 'g', 'р': 'h',
-  'с': 'c', 'т': 'n', 'у': 'e', 'ф': 'a', 'х': '\'', 'ц': 'w',
-  'ч': 'x', 'ш': 'i', 'щ': 'o', 'ъ': '[', 'ы': 's', 'ь': 'm',
-  'э': ']', 'ю': '.', 'я': 'z'
-};
-
-const REVERSE_MAP = Object.fromEntries(
-  Object.entries(MAPA_CARACTERES).map(([cyr, lat]) => [lat, cyr])
-);
+import { MAPA_CARACTERES, REVERSE_MAP } from './../../data/char-map.js';
 
 let currentChar = '';
 
@@ -72,4 +61,5 @@ function checkAnswer(mode) {
   } else if (input.length > 0) {
     feedback.textContent = '❌ Try again...';
   }
+  console.log(`input: [${input}] | correct: [${correct}]`);
 }
