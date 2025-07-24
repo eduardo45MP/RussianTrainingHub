@@ -1,48 +1,55 @@
-/*assets/css/style.css*/
+/* 
+  Arquivo: assets/css/style.css
+  Descrição: Estilos principais para a interface do jogo.
+  Inclui reset básico, layout do corpo, elementos de interface como botões, entradas de texto e seções como menu e jogo.
+*/
 
-/* Basic reset */
+/* Reset básico de margens, preenchimento e modelo de caixa */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Estilo geral do corpo da página */
 body {
-  background-color: #111;
-  color: #f0f0f0;
-  font-family: 'Fira Code', monospace;
-  padding: 2rem;
+  background-color: #111;              /* Cor de fundo escura para modo noturno */
+  color: #f0f0f0;                      /* Texto claro para contraste */
+  font-family: 'Fira Code', monospace;/* Fonte monoespaçada moderna */
+  padding: 2rem;                       /* Espaçamento interno do corpo */
   display: flex;
   flex-direction: column;
-  align-items: centre;
-  min-height: 100vh;
+  align-items: center;                /* Centraliza conteúdo na horizontal */
+  min-height: 100vh;                  /* Garante altura mínima de tela cheia */
 }
 
+/* Título principal */
 h1 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #61dafb;
-  text-align: centre;
+  color: #61dafb;                     /* Azul claro para destaque */
+  text-align: center;                 /* Centraliza o texto */
 }
 
+/* Subtítulo ou seções secundárias */
 h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #ffcc00;
+  color: #ffcc00;                     /* Amarelo vibrante */
 }
 
-/* Menu and game */
+/* Estilo compartilhado entre menu inicial e área do jogo */
 #menu, #game {
-  background-color: #222;
+  background-color: #222;             /* Leve contraste com o fundo */
   padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px #000;
+  border-radius: 1rem;                /* Cantos arredondados */
+  box-shadow: 0 0 10px #000;          /* Sombra sutil para destaque */
   width: 100%;
   max-width: 500px;
-  text-align: centre;
+  text-align: center;                 /* Alinha conteúdo ao centro */
 }
 
-/* Buttons */
+/* Botões do jogo/menu */
 button {
   background-color: #333;
   color: #fff;
@@ -52,14 +59,16 @@ button {
   border-radius: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-colour 0.3s ease;
+  transition: background-color 0.3s ease; /* Animação suave ao passar o mouse */
   width: 100%;
 }
 
+/* Estilo ao passar o mouse sobre os botões */
 button:hover {
-  background-color: #555;
+  background-color: #555;             /* Tom mais claro no hover */
 }
 
+/* Campo de entrada de texto */
 input[type="text"] {
   padding: 0.75rem;
   font-size: 1rem;
@@ -67,23 +76,24 @@ input[type="text"] {
   width: 100%;
   max-width: 300px;
   border-radius: 0.5rem;
-  border: 1px solid #444;
-  background-color: #1a1a1a;
-  color: #fff;
-  text-align: centre;
+  border: 1px solid #444;            /* Borda discreta */
+  background-color: #1a1a1a;         /* Fundo mais escuro */
+  color: #fff;                       /* Texto branco */
+  text-align: center;
 }
 
-/* Feedback */
+/* Área para mensagens de feedback (acertos/erros/etc) */
 #feedback {
   font-size: 1.2rem;
   margin-top: 1rem;
-  min-height: 2rem;
+  min-height: 2rem;                   /* Garante altura mínima, mesmo sem conteúdo */
 }
 
+/* Área onde aparece o desafio atual (ex: palavra ou número a ser digitado) */
 #challenge {
   font-size: 2rem;
   font-weight: bold;
   margin-top: 1rem;
   display: inline-block;
-  color: #00ffcc;
+  color: #00ffcc;                     /* Verde água vibrante */
 }

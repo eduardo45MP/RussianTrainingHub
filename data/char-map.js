@@ -1,5 +1,21 @@
-// ./data/char-map.js
+/**
+ * File: data/char-map.js
+ * Description:
+ *   - Character map between Russian (Cyrillic) and Latin-based keyboard layout (ABNT2).
+ *   - Reverse map for bidirectional transliteration.
+ *   - Basic Russian vocabulary organised by difficulty levels.
+ */
 
+/**
+ * MAPA_CARACTERES (Character Map)
+ *
+ * Maps each Cyrillic character to a corresponding key on a Latin ABNT2 keyboard.
+ * This facilitates typing Russian letters using a familiar physical layout.
+ *
+ * Example:
+ *   'а' → 'f'
+ *   'ж' → 'ç'
+ */
 export const MAPA_CARACTERES = {
   'а': 'f', 'б': ',', 'в': 'd', 'г': 'u', 'д': 'l', 'е': 't',
   'ё': "'", 'ж': 'ç', 'з': 'p', 'и': 'b', 'й': 'q', 'к': 'r',
@@ -9,12 +25,28 @@ export const MAPA_CARACTERES = {
   'э': ']', 'ю': '.', 'я': 'z'
 };
 
+/**
+ * REVERSE_MAP
+ *
+ * Generates the reverse mapping of MAPA_CARACTERES.
+ * Enables transliteration from Latin input back into Cyrillic.
+ */
 export const REVERSE_MAP = Object.fromEntries(
   Object.entries(MAPA_CARACTERES).map(([cyr, lat]) => [lat, cyr])
 );
 
+/**
+ * RUSSIAN_WORDS
+ *
+ * A basic Russian vocabulary dataset grouped by level (1 to 5).
+ * Each word object includes:
+ *   - `word`: a Russian word written in Cyrillic script.
+ *   - `translation`: its English meaning (British spelling preserved where relevant).
+ *
+ * Intended for progressive language learning through typing and reading.
+ */
 export const RUSSIAN_WORDS = {
-  1: [
+  1: [ // Beginner
     { word: 'да', translation: 'yes' },
     { word: 'нет', translation: 'no' },
     { word: 'он', translation: 'he' },
@@ -31,12 +63,12 @@ export const RUSSIAN_WORDS = {
     { word: 'тот', translation: 'that (one)' },
     { word: 'здесь', translation: 'here' },
     { word: 'там', translation: 'there' },
-    { word: 'мама', translation: 'mom' },
+    { word: 'мама', translation: 'mum' },
     { word: 'папа', translation: 'dad' },
     { word: 'дом', translation: 'house' },
     { word: 'кот', translation: 'cat (male)' }
   ],
-    2: [
+  2: [ // Basic nouns
     { word: 'собака', translation: 'dog' },
     { word: 'друг', translation: 'friend (male)' },
     { word: 'подруга', translation: 'friend (female)' },
@@ -58,7 +90,7 @@ export const RUSSIAN_WORDS = {
     { word: 'страна', translation: 'country' },
     { word: 'вещь', translation: 'thing / object' }
   ],
-  3: [
+  3: [ // Everyday vocabulary
     { word: 'любовь', translation: 'love' },
     { word: 'голос', translation: 'voice' },
     { word: 'слово', translation: 'word' },
@@ -80,7 +112,7 @@ export const RUSSIAN_WORDS = {
     { word: 'иногда', translation: 'sometimes' },
     { word: 'часто', translation: 'often' }
   ],
-    4: [
+  4: [ // Descriptions, emotions, family
     { word: 'ещё', translation: 'still / more' },
     { word: 'жена', translation: 'wife' },
     { word: 'муж', translation: 'husband' },
@@ -102,7 +134,7 @@ export const RUSSIAN_WORDS = {
     { word: 'мышь', translation: 'mouse' },
     { word: 'ключ', translation: 'key' }
   ],
-  5: [
+  5: [ // Advanced vocabulary
     { word: 'ответственность', translation: 'responsibility' },
     { word: 'представление', translation: 'presentation / idea' },
     { word: 'удивительный', translation: 'amazing' },
