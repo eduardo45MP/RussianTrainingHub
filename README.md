@@ -6,13 +6,16 @@
 
 ## 🎯 Features
 
-- **Typing Modes (Character-Level):**
-  - *Latin → Cyrillic*: Displays a Latin key, expects the Cyrillic character.
-  - *Cyrillic → Latin*: Shows a Cyrillic letter, user types the matching Latin key.
+* **Typing Modes (Character-Level):**
 
-- **Live Feedback**: Instant correctness feedback to reinforce learning.
-- **Pure Frontend**: No backend or external dependencies.
-- **Mobile-Friendly & Offline-Capable**: Runs fully in-browser.
+  * *Latin → Cyrillic*: Displays a Latin key, expects the Cyrillic character.
+  * *Cyrillic → Latin*: Shows a Cyrillic letter, user types the matching Latin key.
+
+* **Live Feedback:** Instant correctness feedback to reinforce learning.
+
+* **Pure Frontend:** No backend or external dependencies.
+
+* **Mobile-Friendly & Offline-Capable:** Runs fully in-browser.
 
 ---
 
@@ -31,7 +34,7 @@ root/
 ├── index.html      # Base SPA template
 ├── LICENSE         # MIT Licence
 └── README.md       # You're here!
-````
+```
 
 Each module under `pages/` is self-contained and designed to scale independently.
 

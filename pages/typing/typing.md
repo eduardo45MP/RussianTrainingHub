@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `typing` module contains the logic and UI handling for character-level typing games. These games train the user to mentally map between the Cyrillic and Latin (ABNT2) keyboard layouts, improving typing speed and familiarity with Russian orthography.
+The `typing` module provides the core functionality for character-based and word-based Russian typing practice. It focuses on training users to mentally map between Cyrillic and Latin (ABNT2) keyboard layouts and reinforcing Russian orthography through repetition and feedback.
 
 ---
 
@@ -12,7 +12,7 @@ The `typing` module contains the logic and UI handling for character-level typin
 
 #### Purpose
 
-Acts as the entry point for launching a typing game from the main menu. It exposes the `startMode` function which delegates to the internal logic (`logic.js`).
+Acts as the entry point for launching a typing game from the main menu. It exposes the `startMode` function, which delegates the game logic to `logic.js`.
 
 #### Exported Function
 
@@ -20,11 +20,12 @@ Acts as the entry point for launching a typing game from the main menu. It expos
 startMode(mode: string): void
 ```
 
-* **mode**: `"latin"` or `"cyrillic"`
+* **mode**: `"latin"`, `"cyrillic"`, or `"words"`
 * Launches the game in the specified direction:
 
   * `"latin"`: Show Latin character, expect Cyrillic input.
   * `"cyrillic"`: Show Cyrillic character, expect Latin input.
+  * `"words"`: Show full Russian word, expect same word typed in Russian (copy challenge).
 
 ---
 
@@ -32,76 +33,86 @@ startMode(mode: string): void
 
 #### Purpose
 
-Contains the full game loop and logic for the typing interface. It dynamically renders the game UI, presents character challenges, handles user input, evaluates answers, and gives feedback.
+Implements the complete logic and UI for the typing modes. Handles rendering, user input, challenge cycling, and feedback display.
 
-#### Core Components
+#### Core Variables
 
-* **`currentChar`**
-  A module-scoped variable storing the currently active character the user must answer.
-
-#### Main Functions
+* **`currentChar` / `currentWord`**: Stores the current challenge (single char or word) shown to the user.
+* **`mode`**: Determines which logic branch is active.
 
 ---
 
-##### `startTypingGame(mode: string): void`
-
-Initialises the game interface and logic for the chosen mode. Injects the required HTML into the `#app` container, sets up input listeners, and calls the first challenge.
-
-* **UI elements**:
-
-  * Title: displays current mode.
-  * Challenge: shows character to be translated.
-  * Input field: for user answer.
-  * Feedback area: visual result of input.
-  * Back to Menu button.
+## Main Functions
 
 ---
 
-##### `nextChallenge(mode: string): void`
+### `startTypingGame(mode: string): void`
 
-Selects a new random character from the mapping depending on the selected mode:
+Initialises the game interface and logic for the chosen mode. Injects game HTML into the `#app` container, adds event listeners, and starts the first challenge.
 
-* `"latin"`: picks a Latin character from `MAPA_CARACTERES`, expects Cyrillic answer.
-* `"cyrillic"`: picks a Cyrillic character key, expects Latin answer.
+* UI Elements:
 
-It also resets the input and feedback display between rounds.
+  * Game title (shows mode)
+  * Challenge display (`character` or `word`)
+  * Input field
+  * Feedback label
+  * Back to Menu button
 
 ---
 
-##### `checkAnswer(mode: string): void`
+### `nextChallenge(mode: string): void`
 
-Reads and sanitises the user input, then compares it with the expected answer using the appropriate mapping:
+Determines the next challenge and updates the UI accordingly:
 
-* `"latin"`: uses `REVERSE_MAP` to look up the Cyrillic counterpart.
-* `"cyrillic"`: uses `MAPA_CARACTERES` to look up the Latin counterpart.
+* `"latin"`: Randomly selects a Latin char from `MAPA_CARACTERES`, expects corresponding Cyrillic.
+* `"cyrillic"`: Randomly selects a Cyrillic char from `MAPA_CARACTERES`, expects Latin input.
+* `"words"`: Randomly selects a full Russian word from `RUSSIAN_WORDS[1]`, and expects the same word typed back (copying exercise).
 
-Provides:
+Resets input and clears feedback.
 
-* ✅ **Correct** feedback and automatically continues to next challenge after 1 second.
-* ❌ **Try again** feedback if the input is incorrect.
+---
 
-Logs both `input` and `correct` values to the console for debugging.
+### `checkAnswer(mode: string): void`
+
+Compares user input against the correct answer:
+
+* `"latin"`: Validates using `REVERSE_MAP`.
+
+* `"cyrillic"`: Validates using `MAPA_CARACTERES`.
+
+* `"words"`: Validates against the exact word shown.
+
+* ✅ Shows “Correct” feedback and advances to the next challenge after a delay.
+
+* ❌ Shows “Try again” feedback.
+
+Includes console logs for input and expected result for debugging.
 
 ---
 
 ## Dependencies
 
-* **`MAPA_CARACTERES`** and **`REVERSE_MAP`** from [`data/char-map.js`](../../data/char-map.js):
-
-  * These maps define the transliteration between Cyrillic and Latin layouts.
+* [`MAPA_CARACTERES`](../../data/char-map.js)
+* [`REVERSE_MAP`](../../data/char-map.js)
+* [`RUSSIAN_WORDS`](../../data/char-map.js) — only for `"words"` mode.
 
 ---
 
 ## Planned Extensions
 
-* Integration of a `"words"` typing mode.
-* Support for scoring, progress tracking, and timed sessions.
-* Mobile keyboard compatibility.
+* Timed typing sessions
+* Scoring and accuracy metrics
+* Hints system for new learners
+* Responsive design and mobile input support
 
 ---
 
 ## Status
 
-✅ Functional core for character-based typing
-🧩 `"words"` mode not yet implemented
-🔧 Room for extension with animations, hints, or hints toggling
+| Mode        | Status                         |
+| ----------- | ------------------------------ |
+| `latin`     | ✅ Working                      |
+| `cyrillic`  | ✅ Working                      |
+| `words`     | ✅ Rudimentary functional       |
+| Full words  | 🔧 No scoring or hinting yet   |
+| Game polish | 🔧 Visual enhancements pending |

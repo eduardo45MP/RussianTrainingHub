@@ -12,20 +12,6 @@ The `utils/` directory is dedicated to storing utility functions that provide re
 
 ```js
 // utils/shuffle.js
-// Empty file – utility for randomising arrays (to be implemented)
-```
-
-#### Purpose
-
-This file is intended to implement an array shuffling function, commonly used in:
-
-* Randomising question orders in vocabulary or declension games.
-* Presenting characters or words in unpredictable sequences during typing drills.
-* Shuffling answer choices in multiple choice quizzes.
-
-#### Planned Implementation
-
-```js
 /**
  * shuffleArray
  *
@@ -42,6 +28,14 @@ export function shuffleArray(array) {
   return array;
 }
 ```
+
+#### Purpose
+
+This file implements an array shuffling function, commonly used in:
+
+* Randomising question orders in vocabulary or declension games.
+* Presenting characters or words in unpredictable sequences during typing drills.
+* Shuffling answer choices in multiple choice quizzes.
 
 ---
 
@@ -67,7 +61,7 @@ Once implemented, this utility will likely be used in:
 
 ## Status Summary
 
-| File         | Description              | Status     |
-| ------------ | ------------------------ | ---------- |
-| `shuffle.js` | Array shuffling function | 🚧 Pending |
-| `utils.md`   | Module documentation     | ✅ Done     |
+| File         | Description              | Status |
+| ------------ | ------------------------ | ------ |
+| `shuffle.js` | Array shuffling function | ✅ Done |
+| `utils.md`   | Module documentation     | ✅ Done |

@@ -5,7 +5,8 @@
 //   handles user interaction for menu toggling and game mode selection,
 //   and delegates game start to the appropriate module.
 
-import { startMode } from './typing/index.js'; // Import the base typing game starter
+import { startMode as startTyping } from './typing/index.js';
+import { startMode as startVocabulary } from './vocabulary/index.js';
 
 const app = document.getElementById('app');
 
@@ -28,9 +29,9 @@ function renderMenu() {
         <button data-mode="words">Words</button>
       </div>
 
+      <button id="vocab-button">Vocabulary Games</button>
       <button onclick="alert('Declension games coming soon!')">Declension Games</button>
       <button onclick="alert('Conjugation games coming soon!')">Conjugation Games</button>
-      <button onclick="alert('Vocabulary games coming soon!')">Vocabulary Games</button>
       <button onclick="alert('Thanks for playing!')">Exit</button>
     </div>
   `;
@@ -42,25 +43,27 @@ function renderMenu() {
     submenu.style.display = submenu.style.display === 'none' ? 'block' : 'none';
   });
 
-  // Attach event listeners to submenu buttons to start the game in selected mode
+  // Typing submenu handlers
   document.querySelectorAll('#typing-submenu button[data-mode]').forEach(button => {
     button.addEventListener('click', () => {
       const mode = button.getAttribute('data-mode');
-      startGame(mode);
+      startTyping(mode);
     });
+  });
+
+  // Vocabulary button handler
+  document.getElementById('vocab-button').addEventListener('click', () => {
+    startVocabulary('basic'); // Default to 'basic' mode for now
   });
 }
 
 /**
  * startGame
  *
- * Delegates starting the game by calling the imported startMode function
- * with the selected mode.
- *
- * @param {string} mode - The selected game mode ('latin', 'cyrillic', 'words', etc.).
+ * Deprecated in favor of module-specific handlers.
  */
 function startGame(mode) {
-  startMode(mode);
+  console.warn('startGame() is deprecated. Use module-specific handlers instead.');
 }
 
 // Expose renderMenu to global scope to allow returning to menu from other pages/modules

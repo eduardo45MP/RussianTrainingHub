@@ -1,3 +1,7 @@
+Claro, Eduardo. Aqui está a versão atualizada do documento `pages/README.md`, refletindo que o módulo de vocabulário agora possui um modo funcional (`basic`) com lógica e UI completas:
+
+---
+
 # `pages/` – Game Modules Entry Points
 
 ## Overview
@@ -16,8 +20,9 @@ Each subdirectory is designed as a standalone game engine while adhering to a sh
 ├── typing/                   # Typing game logic and interface
 │   ├── index.js
 │   └── logic.js
-├── vocabulary/               # Vocabulary training module (placeholder)
-│   └── index.js
+├── vocabulary/               # Vocabulary training module
+│   ├── index.js
+│   └── logic.js
 ├── conjugation/              # Verb conjugation module (placeholder)
 │   └── index.js
 ├── declension/               # Noun/adjective/pronoun declension module (placeholder)
@@ -34,7 +39,7 @@ Each subdirectory is designed as a standalone game engine while adhering to a sh
 * **Features**:
 
   * Renders clickable category buttons (Typing, Vocabulary, Conjugation, Declension).
-  * Expands typing submenu and allows launching specific modes like `'latin'`, `'cyrillic'`, and `'words'` (WIP).
+  * Expands typing submenu and allows launching specific modes like `'latin'`, `'cyrillic'`, and `'words'`.
   * Provides `returnToMenu()` globally to allow modules to return to the main interface.
 
 ---
@@ -42,17 +47,17 @@ Each subdirectory is designed as a standalone game engine while adhering to a sh
 ### ⌨️ `typing/` – Typing Games
 
 * **Implemented**: ✅ Yes (core character-based game)
+
 * **Files**:
 
   * `index.js`: Exports `startMode(mode)` to launch the game.
-  * `logic.js`: Implements the entire character challenge loop, input validation, and feedback rendering.
+  * `logic.js`: Implements the full game loop, input validation, and feedback.
+
 * **Modes**:
 
   * `'latin'`: Latin character shown → Cyrillic expected.
   * `'cyrillic'`: Cyrillic character shown → Latin expected.
-* **Planned**:
-
-  * `'words'` mode for full-word transliteration training.
+  * `'words'`: (WIP) Russian word shown → User copies in Cyrillic (using Latin keyboard).
 
 > See [`pages/typing/typing.md`](./typing/typing.md) for details.
 
@@ -60,16 +65,25 @@ Each subdirectory is designed as a standalone game engine while adhering to a sh
 
 ### 📖 `vocabulary/` – Vocabulary Module
 
-* **Implemented**: 🕒 Not yet
-* **Current File**:
+* **Implemented**: ✅ Basic mode functional
 
-  * `index.js`: Empty placeholder to preserve structure.
-* **Planned Features**:
+* **Files**:
 
-  * Flashcards, multiple choice, spelling, level progression.
-* **Data Dependency**: `RUSSIAN_WORDS` from [`data/char-map.js`](../data/char-map.js)
+  * `index.js`: Exposes `startMode(mode)` for integration.
+  * `logic.js`: Implements the `"basic"` typing challenge.
 
-> See [`pages/vocabulary/vocabulary.md`](./vocabulary/vocabulary.md) for details.
+* **Modes**:
+
+  * `'basic'`: User sees English word and types the Russian equivalent in Cyrillic.
+
+* **Features**:
+
+  * Level selector.
+  * Word queue shuffled per session.
+  * Real-time feedback (✅ / ❌).
+  * Uses `RUSSIAN_WORDS` from `char-map.js`.
+
+> See [`pages/vocabulary/vocabulary.md`](./vocabulary/vocabulary.md) for implementation details.
 
 ---
 
@@ -114,7 +128,7 @@ Each subdirectory is designed as a standalone game engine while adhering to a sh
 | Module      | UI Scaffold | Game Logic | Data Source           | Status        |
 | ----------- | ----------- | ---------- | --------------------- | ------------- |
 | Typing      | ✅           | ✅          | `char-map.js`         | ✅ Functional  |
-| Vocabulary  | ✅           | 🚧         | `char-map.js` (words) | 🕒 Planned    |
+| Vocabulary  | ✅           | ✅ (basic)  | `char-map.js` (words) | ✅ Basic Ready |
 | Conjugation | ✅           | 🚫         | 🔜 `verbs.js`         | 🕒 Scaffolded |
 | Declension  | ✅           | 🚫         | 🔜 `cases.js`, etc.   | 🕒 Scaffolded |
 
@@ -128,3 +142,7 @@ When extending a page module:
 * Expose a mode selector or `start()` function from `index.js`.
 * Respect the UI structure and layout from `assets/css/style.css`.
 * Add a `.md` file in the module folder documenting its logic, UI, and roadmap.
+
+---
+
+Se quiser, posso preparar o `pages/README.md` finalizado no formato Markdown pronto para commit. Deseja isso agora?
